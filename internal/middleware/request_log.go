@@ -55,7 +55,7 @@ func LoggerMiddleware() gin.HandlerFunc {
 		}
 		if err := dao.RequestLogRepo.Create(userLog); err != nil {
 			// 全局捕捉数据库服务运行时错误
-			logger.Errorf("服务端数据库炸了, %v", err)
+			logger.Errorf("数据库炸了, %v", err)
 			//  此时还可以顺便推送服务器运行错误的消息到你的webhook消息推送服务接口, 例如pushplus
 			//  http.Get("你的pushplus webhook地址")
 			return

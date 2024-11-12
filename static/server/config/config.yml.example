@@ -1,0 +1,47 @@
+# 服务启动配置
+server:
+  # debug开关
+  debug: false
+  # 服务启动端口
+  port: 8082
+
+# Gorm数据库配置, 启动时自动建表, 无需导入sql文件
+database:
+  # 项目默认使用MySQL进行开发, 如需其他数据库, 请自行前往./internal/config/db.go修改依赖
+  dsn: "用户名:密码@tcp(localhost:3306)/数据库名?charset=utf8mb4&parseTime=True&loc=UTC"
+
+# Token(JWT)配置
+token:
+  # JWT密钥
+  jwt_key: "KazeFrame"
+  # 访问令牌有效期(秒), 建议短一点默认60分钟
+  access_exp: 3600
+  # 刷新令牌有效期(秒), 用于维持登录状态的TOKEN, 建议7天, 在登录接口传递一个remember_me参数可以覆盖掉
+  refresh_exp: 604800
+
+# Redis缓存配置
+redis:
+  address: "localhost:6379"
+  password: ""
+  database: 0
+
+# 邮件推送服务
+email:
+  # 邮件服务开关, 关闭后注册无需邮件验证, 但用户将无法自行重置和找回密码
+  enable: true
+  # 发件人名称, 随意更改
+  sender_name: "KazeFrame"
+  # 发件人邮箱
+  sender_email: "发件人邮箱@qq.com"
+  # 服务授权码
+  sender_password: "smtp授权码"
+  # SMTP服务地址
+  smtp_server: "smtp服务地址"
+  # SMTP端口号
+  smtp_port: 465
+
+# 跨域配置, 如果启用星号通配符, 则其他配置将不会生效
+cors:
+  - "http://x.com"
+  - "https://www.example.com"
+  - "*"

@@ -1,19 +1,37 @@
-<center>
+<div align=center>
 <img src="https://testingcf.jsdelivr.net/gh/4444TENSEI/CDN/img/avatar/kaze/png/rounded.png" alt="KazeCryptoAPI" width="200" height="200"/>
-<p style="font-size:60px; margin:30px 0;1;font-weight: bold;">KazeFrame</p>
-<p style="margin:0;">使用Gin+Gorm+Redis开发的轻盈、快速开发脚手架，源码注释非常详细。</p>
-<p style="margin:0;">包含登陆、注册、邮件发送等多个所有项目通用的基础接口</p>
-<p style="margin:0;">带有JWT鉴权、频繁请求限制中间件，以及本地运行日志/日志切割</p>
-<p style="margin:0;">高度封装数据CRUD操作，极易拓展新增业务</p>
-<a href="https://apifox.com/apidoc/shared-dd0fa318-5437-499c-9227-956e9003fabc" target="_blank">查看在线接口文档</a>
-<p style="margin-top:20px;">
+<h1>KazeFrame</h1>
+<h3>迷你、轻盈的Gin+Gorm+Redis开发脚手架。</h3>
+<p>使用经典MVC模式，实现登陆、注册、邮件发送等多个在线项目开发必备基础接口</p>
+<p>包含JWT鉴权、频繁请求限制中间件，以及一些实用、通用工具</p>
+<p>以及本地运行日志/日志切割、详细的站点访问日志记录</p>
+<p>封装数据CRUD操作已经全部封装好，极易拓展新增业务</p>
+<p>
     <img src="https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white" />
     <img src="https://img.shields.io/badge/redis-%23DD0031.svg?&style=for-the-badge&logo=redis&logoColor=white" />
 </p>
-</center>
+</div>
 
+> # 简介
 
-> # **进入开发**
+> 相信很多时候，你都需要一次又一次的重新开始，那么由KazeFrame来为你提供，相信这个项目会是一个适合你的出发点。
+
+1. 在线项目必备接口：登录、注册、接口请求日志等等
+2. 邮件服务：注册验证码、密码重置验证码发送，邮件HTML模板
+3. 中间件：权限认证中间件、基于IP统计的访问频率限制中间件、站点访问捕捉中间件
+4. 通用工具：JWT生成、密码散列加密、RSA非对称加密工具
+5. 用户在线状态：通过访问Token+刷新Token机制，实现用户在线状态监控以及令牌有效期控制
+6. 数据库访问层合理封装（`dao`包）：没有过度抽象，为你的新增业务接口，快速实现CRUD操作
+7. 学习：源码注释极为详细
+8. 详细的在线接口文档：[点击查看](https://apifox.com/apidoc/shared-dd0fa318-5437-499c-9227-956e9003fabc)
+
+![](https://testingcf.jsdelivr.net/gh/4444TENSEI/CDN/img/server/readme/KazeFrame/001.webp)
+
+![](https://testingcf.jsdelivr.net/gh/4444TENSEI/CDN/img/server/readme/KazeFrame/002.webp)
+
+![](https://testingcf.jsdelivr.net/gh/4444TENSEI/CDN/img/server/readme/KazeFrame/003.webp)
+
+> # 开始
 
 1. ### 拉取项目，进入到项目根目录，启动你的编辑器
 
@@ -33,9 +51,9 @@
    go run .
    ```
 
-   > 推荐使用`Air`进行项目开发（项目运行时自动监测代码文件改动，自动重新编译进行热重载）
+   > 推荐使用`Air`进行项目开发（项目运行时自动监测代码文件改动，自动重新编译进行热重载），另外项目启动时将会在项目目录下创建`运行日志.log`，能够用于排查部署到服务器后的运行错误
 
-   > # **目录结构**
+   > # 目录结构
 
 ```
 KazeFrame
@@ -43,7 +61,6 @@ KazeFrame
 ├─ go.mod   //模块配置
 ├─ go.sum   //模块依赖
 ├─ .air.toml    //air配置
-├─ README.md    //说明文档
 ├─ script   //各类便捷脚本
 │  ├─ pack_dist_linux.ps1   //Linux可执行文件打包脚本
 │  ├─ pack_dist_win.ps1 //Windows可执行文件打包脚本
@@ -111,6 +128,8 @@ KazeFrame
 
 > # **支持项目**
 
-- #### ⭐只需您的一个小小的Star！
+- #### ⭐等待您小小的一个`Star`！
 
-- #### ⭐如果有任何Bug请随时提出issue
+- #### ⭐如果有任何Bug / 更多的建议，欢迎你随时提出issue！
+
+- #### ⭐联络作者：2479757568@qq.com

@@ -1,9 +1,9 @@
 tmp/
 dist/
 version/
-static/
 
 tempCodeRunnerFile.ps1
+
 *.pem
 *.yml
 *.zip

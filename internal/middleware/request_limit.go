@@ -29,7 +29,7 @@ func IPRateLimiter(max int, expires time.Duration) gin.HandlerFunc {
 		if err != nil {
 			util.Rsp(c, 500, "服务端缓存服务炸了, "+err.Error())
 			// 记录Redis崩溃到本地日志文件
-			logger.Error("服务端缓存服务炸了, ", err.Error())
+			logger.Error("Redis服务炸了, ", err.Error())
 			//  此时还可以顺便推送服务器运行错误的消息到你的webhook消息推送服务接口, 例如pushplus
 			//  http.Get("你的pushplus webhook地址")
 			return
@@ -40,7 +40,7 @@ func IPRateLimiter(max int, expires time.Duration) gin.HandlerFunc {
 				if err == redis.Nil {
 					c.Next()
 				}
-				util.Rsp(c, 500, "服务端缓存服务处理不过来, "+err.Error())
+				util.Rsp(c, 500, "服务端缓存服务出现了问题, "+err.Error())
 				return
 			}
 			if current >= max {
@@ -48,7 +48,7 @@ func IPRateLimiter(max int, expires time.Duration) gin.HandlerFunc {
 				return
 			}
 			if _, err := client.Incr(ctx, key).Result(); err != nil {
-				util.Rsp(c, 429, "服务端缓存服务处理失败: "+err.Error())
+				util.Rsp(c, 429, "服务端缓存服务出现了问题: "+err.Error())
 				return
 			}
 		}
