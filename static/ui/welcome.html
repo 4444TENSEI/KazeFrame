@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KazeFrame</title>
+    <link rel="icon" href="https://testingcf.jsdelivr.net/gh/4444TENSEI/CDN/img/avatar/kaze/png/rounded.png"
+        type="image/png">
+</head>
+
+<body>
+    <div class="card">
+        <img src="https://testingcf.jsdelivr.net/gh/4444TENSEI/CDN/img/avatar/kaze/png/rounded.png" />
+        <h1>KazeFrame</h1>
+        <button type="button"
+            onclick="window.open('https://apifox.com/apidoc/shared-dd0fa318-5437-499c-9227-956e9003fabc', '_blank')">在线接口文档(可导出)</button>
+        <button type="button"
+            onclick="window.open('https://github.com/4444TENSEI/KazeFrame', '_blank')">点个STAR</button>
+        <button type="button" id="sendEmailButton">点击测试您的smtp邮件服务</button>
+        <p>本页面位于路径"/static/ui"目录下, 这个目录下皆为公开可访问的静态资源</p>
+        <p>移除静态资源服务方式：全局搜索"r.Static"删除相关代码</p>
+        <p>如不需要本页面也可以移除"/static/ui"目录。</p>
+        <p>切记保留"/static/server"路径, 用于存放打包连带的依赖文件一起用于部署。</p>
+    </div>
+</body>
+
+</html>
+
+<script>
+    document.getElementById('sendEmailButton').addEventListener('click', function () {
+        var email = prompt("请输入您的收件人邮箱地址(不能和smtp发件人相同): ");
+        if (email != null && email != "") {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/user/captcha/register", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        alert(xhr.responseText);
+                    } else {
+                        alert("请求失败: " + xhr.status + " " + xhr.statusText);
+                    }
+                }
+            };
+            xhr.send(JSON.stringify({ "email": email }));
+        }
+    });
+</script>
+
+<style>
+    .card {
+        background-color: rgba(58, 58, 58, 0.5);
+        padding: 40px;
+        border-radius: 60px;
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    button {
+        scale: 1.6;
+        margin: 0 0 20px 0;
+    }
+
+    h1 {
+        margin: 10px 0 4px 0;
+        font-size: 40px;
+    }
+
+    p {
+        margin: 0 0 10px 0;
+        font-size: 14px;
+    }
+
+    img {
+        width: 180px;
+        height: 180px;
+    }
+
+    html,
+    body {
+        height: 100%;
+        max-width: 100vw;
+        margin: 0;
+        padding: 0;
+        font-size: 50px;
+        color: white;
+        cursor: default;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        background-repeat: no-repeat;
+        text-shadow: 0px 0px 20px rgb(107, 135, 162), 0px 0px 40px rgb(160, 200, 240), 0px 0px 60px rgb(193, 180, 240);
+        background-image: url('https://testingcf.jsdelivr.net/gh/4444TENSEI/CDN@master/img/background/ls/007.webp');
+        background-position: center;
+        background-size: cover;
+    }
+
+    @media (max-width: 768px) {
+
+        html,
+        body {
+            font-size: 18px;
+        }
+    }
+</style>

@@ -1,0 +1,15 @@
+tmp/
+dist/
+version/
+
+tempCodeRunnerFile.ps1
+.gitattributes
+.gitignore
+
+*.bat
+*.pem
+*.yml
+*.zip
+*.exe
+*.log
+*.py
