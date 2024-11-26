@@ -39,7 +39,6 @@ func main() {
 	}
 	// 记录启动日志、打印到控制台
 	zapLog.Info(">>> 服务启动于端口:", cfg.Server.Port)
-	fmt.Printf("\n\n>>> 服务启动成功, 浏览器访问首页: http://localhost:%s/ui/welcome.html\n\n", cfg.Server.Port)
 	fmt.Printf("\n\n>>> 服务启动成功, 可查看: http://localhost:%s/ui/welcome.html\n\n", cfg.Server.Port)
 	// 开始监听请求
 	if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {

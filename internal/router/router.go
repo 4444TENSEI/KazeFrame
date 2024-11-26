@@ -22,7 +22,6 @@ func RunServer() *gin.Engine {
 	// 频繁访问限制中间件, 制定同一IP在一定时间内仅允许一定数量的请求, 例如这里限制所有路由60分钟内200次请求
 	r.Use(middleware.IPRateLimiter(200, 60*time.Minute))
 	// 公开可访问的静态资源目录, 不能定义为跟路由因为和其他路由会冲突, 故这里定义为/ui
-	// 如果你是前后端分离部署, 则无需配置静态资源目录以及下方的302重定向
 	r.Static("/ui", "./static/ui")
 	// 跟路由302重定向到首页
 	r.GET("/", func(c *gin.Context) {
