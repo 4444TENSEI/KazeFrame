@@ -24,6 +24,10 @@ func RunServer() *gin.Engine {
 	// 公开可访问的静态资源目录, 不能定义为跟路由因为和其他路由会冲突, 故这里定义为/ui
 	// 如果你是前后端分离部署, 则无需配置静态资源目录以及下方的302重定向
 	r.Static("/ui", "./static/ui")
+	// 跟路由302重定向到首页
+	r.GET("/", func(c *gin.Context) {
+		c.Redirect(302, "/ui/welcome.html")
+	})
 	// 404响应
 	r.NoRoute(func(c *gin.Context) {
 		util.Rsp(c, 404, "页面跑丢了~")
